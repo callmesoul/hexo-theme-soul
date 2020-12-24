@@ -1,0 +1,35 @@
+
+<%
+var title = page.title;
+if (is_archive()){
+  title = __('归档');
+  if (is_month()){
+    title += ': ' + page.year + '/' + page.month;
+  } else if (is_year()){
+    title += ': ' + page.year;
+  }
+} else if (is_category()){
+  title = __('目录') + ': ' + page.category;
+} else if (is_tag()){
+  title = __('标签') + ': ' + page.tag;
+}
+%>
+<title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
+<meta charset="UTF-8">
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content=""/>
+<meta name="description" content="不超过150个字符"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<link href="//at.alicdn.com/t/font_209819_ds8dhnnd8vo.css" rel="stylesheet">
+<% if (theme.favicon){ %>
+  <link rel="icon" href="<%- theme.favicon %>">
+<% } %>
+<%- js('js/rem') %>
+<%- css('css/common') %>
+<%- js('js/svg-inject.min') %>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script id="swiperJs" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>

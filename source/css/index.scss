@@ -1,0 +1,117 @@
+.post-list{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.post-item {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  &.more{
+      background: rgba(112, 100, 93, 0.6);
+      color: #ffffff;
+      font-size: 0.3rem;
+      cursor: pointer;
+      position: relative;
+      &:hover{
+          background: rgba(234, 80, 56, 0.6);
+     }
+      #more-loading{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          display: none;
+          img{
+              width: 0.8rem;
+              height: 0.8rem;
+              animation: loading 1s;
+              animation-iteration-count: infinite;
+         }
+     }
+ }
+  .image {
+      overflow: hidden;
+      img {
+          width: 100%;
+          transition: all 0.5s;
+     }
+ }
+  .post-tags{
+      margin-top: 0.1rem;
+      span{
+          display: inline-block;
+          background: rgba(255, 255, 255, 0.2);
+          font-size: 0.12rem;
+          padding: 0 0.05rem;
+          margin-right: 0.05rem;
+     }
+ }
+  .content-warp {
+      padding: 0.1rem;
+      background: rgba(112, 100, 93, 0.6);
+      transition: background-color 1s;
+      -webkit-transition: background-color 1s;
+      min-height: 0;
+      box-sizing: border-box;
+      .title {
+          font-size: 0.14rem;
+          color: #ffffff;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+     }
+      .content {
+          font-size: 0.12rem;
+          color: #9e9d99;
+          line-height: 0.25rem;
+          margin-top: 0.1rem;
+          white-space: normal;
+          overflow: hidden;
+          min-height: 0;
+     }
+      .other {
+          text-align: right;
+          margin-top: 0.3rem;
+          span {
+              font-size: 0.12rem;
+              color: #9e9d99;
+              margin: 0 0.3rem;
+              &:last-child {
+                  margin-right: 0;
+             }
+              i {
+                  font-size: 0.12rem;
+                  color: #9e9d99;
+                  margin: 0 0.05rem;
+                  vertical-align: baseline;
+             }
+         }
+     }
+ }
+  &:hover {
+      .content-warp {
+          background: rgba(234, 80, 56, 0.6);
+          .content{
+              color: #eee;
+         }
+     }
+      .image {
+          img {
+              transform: scale(1.2);
+              -ms-transform: scale(1.2);
+             /* IE 9 */
+              -moz-transform: scale(1.2);
+             /* Firefox */
+              -webkit-transform: scale(1.2);
+             /* Safari 和 Chrome */
+              -o-transform: scale(1.2);
+             /* Opera */
+         }
+     }
+ }
+}
+

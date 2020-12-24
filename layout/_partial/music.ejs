@@ -1,0 +1,41 @@
+<div class="music flex flex-pack-justify flex-align-center">
+  <div class="control">
+    <a onclick="preSong()"><span class="iconfont icon-shangyishou"></span></a>
+    <a onclick="playControl()"><span class="iconfont play-icon icon-kaishi1"></span></a>
+    <a onclick="nextSong()"><span class="iconfont icon-xiayishou-copy"></span></a>
+  </div>
+  <div class="msg flex1 flex flex-align-center">
+    <span class="time">00:00</span>
+    <div class="line-warp flex1">
+      <div class="song-msg"><%= theme.musics[0].singer %> - <%= theme.musics[0].name %></div>
+      <div class="line" ref="progress-line-warp">
+        <div class="current-line" ref="progress-line">
+          <a tag="a" class="target" v-on:mousedown.prevent="mousedown"></a>
+        </div>
+      </div>
+    </div>
+    <span class="all-time">00:00</span>
+  </div>
+  <div class="right-control">
+    <a class="order-btn flex flex-align-center" onclick="toogleShowMusicList()">
+      <span class="iconfont icon-ttpodicon"></span>
+      <span class="number flex1"><%= theme.musics.length %></span>
+    </a>
+  </div>
+  <audio id="audio" class="mian-audio" src="<%= theme.musics[0].url %>">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
+<!-- 播放列表 -->
+<div class="music-list">
+  <div id="musiclist">
+    <% theme.musics.forEach(function(music,index) { %>
+      <a class="music-item flex flex-align-center" data-name="<%= music.singer %> - <%= music.name %>" data-url="<%= music.url %>" onclick="changePlayIndex(<%- index %>)" >
+        <span class="iconfont" class="icon-kaishi"></span>
+        <span class="title flex1"><%= music.name %> - <%= music.singer %></span>
+      </a>
+    <% }); %>
+    <%- js('js/music') %>
+  </div>
+</div>

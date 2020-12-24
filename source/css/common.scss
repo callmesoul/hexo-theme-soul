@@ -1,0 +1,686 @@
+@import '../css/flex.scss';
+@import '../css/index.scss';
+
+html {
+  height: 100%;
+}
+a{
+  color: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-image: url(../images/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-size: 0.14rem;
+  overflow: hidden;
+}
+
+.height-100 {
+  height: 100%;
+}
+
+.main {
+  height: 100%;
+
+  .main-top {
+    min-height: 0;
+    position: relative;
+
+    .main-left {
+      width: 2.5rem;
+      background: rgba(59, 54, 51, 0.6);
+      box-shadow: 0.03rem 0 0.07rem rgba(37, 40, 40, 0.6);
+      padding-left: 0;
+      padding-right: 0;
+      position: relative;
+      transition: all 0.5s ease-in;
+
+      .main-left-top {
+        .logo {
+          width: 80%;
+          cursor: pointer;
+
+          img {
+            width: 80%;
+            height: auto;
+            display: block;
+            margin: 0.3rem auto 0 auto;
+          }
+
+          .sub-title {
+            margin-top: 0.1rem;
+            text-align: center;
+            color: #999999;
+          }
+        }
+
+        .nav {
+          margin: 0.6rem 0 0 0;
+          padding: 0;
+          border-top: 0.01rem solid #4d3f36;
+
+          a {
+            display: inline-block;
+            vertical-align: middle;
+            display: block;
+            padding: 0.15rem 0.3rem;
+            cursor: pointer;
+            transition: background-color 1s;
+            -webkit-transition: background-color 1s;
+            font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑";
+            font-size: 0.18rem !important;
+            color: #ffffff;
+            border-bottom: 0.01rem solid #4d3f36;
+            text-decoration: none;
+
+            &.active {
+              position: relative;
+
+              &:after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 0.04rem;
+                background: #993122;
+                left: 0;
+                bottom: 0;
+              }
+            }
+
+            &:hover,
+            .nav-current {
+              background: rgba(255, 255, 255, 0.1);
+            }
+
+            .icon {
+              max-width: 0.2rem;
+              max-height: 0.2rem;
+              margin-right: 0.1rem;
+              display: inline-block;
+              vertical-align: middle;
+
+              path {
+                fill: #ffffff;
+              }
+            }
+
+            .name {
+              display: inline-block;
+              vertical-align: middle;
+              margin-left: 0.0.02rem;
+              font-size: 0.16rem;
+              color: #ffffff;
+            }
+
+            .cnname {
+              font-size: 0.16rem;
+              color: #ffffff;
+            }
+
+            .enname {
+              font-size: 0.12rem;
+              color: #9e9d99;
+              margin-top: 0.1rem;
+            }
+          }
+        }
+      }
+
+      .website-msg {
+        font-size: 0.12rem;
+        color: #6f6666;
+        text-align: center;
+        line-height: 0.25rem;
+
+        a {
+          color: #999999;
+          cursor: pointer;
+        }
+
+        .beian {
+          a {
+            color: #6f6666;
+          }
+        }
+      }
+
+      .social {
+        margin-top: 0.1rem;
+        border-top: 0.01rem solid #332e2b;
+        width: 100%;
+        border-top: 0.01rem solid rgba(17, 13, 10, 0.63);
+
+        a {
+          .icon {
+            height: 0.5rem;
+            border-right: 0.01rem solid rgba(17, 13, 10, 0.63);
+
+            .svg-icon {
+              width: 0.2rem;
+              height: 0.2rem;
+              display: inline-block;
+
+              path {
+                fill: #9e9d99;
+              }
+            }
+          }
+
+          &:last-child {
+            .icon {
+              border-right: 0;
+            }
+
+          }
+        }
+
+        .flex1 {
+          position: relative;
+          height: 0.5rem;
+          line-height: 0.5rem;
+
+          &:hover {
+            background: #504B47;
+
+            .icon {
+              a {
+                color: #aaaaaa;
+                line-height: 0.5rem;
+              }
+            }
+          }
+        }
+
+        .title {
+          a {
+            color: #9e9d99;
+            font-size: 0.12rem;
+          }
+        }
+
+        .float {
+          position: absolute;
+          width: 1rem;
+          height: 1rem;
+          left: 0;
+          top: 0;
+          margin-top: -1.16rem;
+          display: none;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .relative {
+          &:hover {
+            .float {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    #frame {
+      padding: 0.3rem;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .main-right {
+      position: relative;
+      overflow: hidden;
+      padding-left: 0;
+      padding-right: 0;
+
+      #main-body {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        #main-body-iframe{
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      #main-body-loading {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0%;
+        display: none;
+        top: 0;
+        z-index: 3;
+        background: rgba(0, 0, 0, 0.8);
+        transition: all 0.5s ease-in-out;
+
+        img {
+          width: 1rem;
+          height: 1rem;
+          animation: loading 1s;
+          animation-iteration-count: infinite;
+        }
+      }
+    }
+  }
+
+  .main-bottom {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: url("/images/vedio-line-bg.jpg") center repeat-x;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+
+    .music {
+      margin: 0 auto;
+      width: 7.4rem;
+      max-width: 100%;
+      height: 0.5rem;
+      background: url('/images/vedio-line-bg.jpg') center repeat-x;
+      position: relative;
+      z-index: 99;
+
+      .control {
+        text-align: center;
+
+        a {
+          cursor: pointer;
+          display: inline-block;
+          background: url("/images/music-contr-bg.png") center no-repeat;
+          background-size: 100% 100%;
+          width: 0.3rem;
+          height: 0.3rem;
+          text-align: center;
+          line-height: 0.3rem;
+          color: #ffffff;
+
+          &:nth-child(2) {
+            width: 0.38rem;
+            height: 0.38rem;
+            line-height: 0.38rem;
+          }
+        }
+      }
+
+      .msg {
+
+        .time,
+        .all-time {
+          font-size: 0.12rem;
+          color: #6b6b6b;
+          display: inline-block;
+          width: 0.35rem;
+          text-align: center;
+        }
+
+        .time {}
+
+        .song-msg {
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          text-align: left;
+          color: #b3b3b3;
+          font-size: 0.12rem;
+          line-height: normal;
+          padding-left: 0.1rem;
+        }
+
+        .line {
+          position: relative;
+          /* height: 0.06rem;
+                     */
+          background: #7b6657;
+          // border: 1px solid #c0acac;
+          height: 0.02rem;
+          border-radius: 0.05rem;
+          margin: 0 0.15rem;
+          margin-top: 0.1rem;
+          transform: all 0.1s;
+          cursor: pointer;
+
+          .current-line {
+            cursor: pointer;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            height: 0.05rem;
+            border-radius: 0.05rem;
+            width: 0;
+            border: 1px solid #eb4f38;
+            background: #eb4f38;
+            margin-top: -0.03rem;
+            box-shadow: 0 0 0.27rem #d06666;
+            transition: all 0.01s;
+
+            .target {
+              cursor: pointer;
+              position: absolute;
+              width: 0.1rem;
+              height: 0.1rem;
+              border-radius: 50%;
+              border: 1px solid #ffffff;
+              right: 0;
+              top: 50%;
+              margin-top: -0.06rem;
+              margin-right: -0.06rem;
+              background: #ffffff;
+
+              &:after {
+                content: '';
+                position: absolute;
+                width: 0.16rem;
+                height: 0.16rem;
+                top: 50%;
+                left: 50%;
+                margin-top: -0.08rem;
+                margin-left: -0.08rem;
+                border: 1px solid #ffffff;
+                border-radius: 50%;
+                box-sizing: border-box;
+              }
+            }
+          }
+        }
+      }
+
+      .right-control {
+        margin-left: 0.15rem;
+
+        .order-btn {
+          color: #67676a;
+          width: 0.5rem;
+          cursor: pointer;
+          background: #211e1c;
+          border-radius: 0.05rem;
+          line-height: normal;
+          border: 1px solid #6a5d53;
+
+          &:hover {
+            background: #000000;
+            color: #ffffff;
+          }
+        }
+      }
+
+      .mian-audio {
+        display: none;
+      }
+    }
+  }
+
+  .music-list {
+    position: fixed;
+    width: 9rem;
+    height: 2rem;
+    background: rgb(39, 35, 32);
+    box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.4);
+    left: 50%;
+    margin-left: -4.5rem;
+    bottom: 0;
+    margin-bottom: -1.99rem;
+    z-index: 98;
+    border-radius: 0.1rem 0.1rem 0 0;
+    padding: 0.15rem;
+    box-sizing: border-box;
+    transition: all 0.5s ease-in-out;
+
+    &.active {
+      margin-bottom: 0.5rem;
+    }
+
+    .music-item {
+      line-height: 0.3rem;
+      color: #b3b3b3;
+      font-size: 0.12rem;
+      border-bottom: 0.01rem solid #353331;
+      cursor: pointer;
+
+      &:hover {
+        background: #353331;
+      }
+
+      &.active {
+        color: #ea5038;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      .iconfont {
+        margin-right: 0.1rem;
+      }
+
+      .title {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.foter {
+  margin: 0.05rem 0;
+  text-align: center;
+
+  a {
+    color: #a79595 !important;
+    font-size: 0.12rem;
+    margin: 0 0.1rem;
+  }
+}
+
+.box-content {
+  padding: 0.3rem 0.3rem 0 0.3rem;
+  min-height: 0;
+  box-sizing: border-box;
+
+  .swiper-container {
+    height: 100%;
+    padding-bottom: 0.3rem;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+}
+
+.swiper-scrollbar {
+  background: rgba(173, 76, 58, .3) !important;
+}
+
+.swiper-scrollbar-drag {
+  background: rgba(235, 81, 57, .7) !important;
+}
+
+/*滚动条的宽度*/
+::-webkit-scrollbar {
+  width: 0.06rem;
+  height: 0.06rem;
+}
+
+/*外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果*/
+::-webkit-scrollbar-track {
+  width: 0.06rem;
+  background-color: transparent;
+  -webkit-border-radius: 0em;
+  -moz-border-radius: 0em;
+  border-radius: 0em;
+}
+
+/*滚动条的设置*/
+::-webkit-scrollbar-thumb {
+  background-color: rgb(158, 39, 23);
+  ;
+  background-clip: padding-box;
+  min-height: 0.28rem;
+  -webkit-border-radius: 0em;
+  -moz-border-radius: 0em;
+  border-radius: 0em;
+}
+
+/*滚动条移上去的背景*/
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(158, 39, 23);
+}
+
+.mobile-nav-btn {
+  color: #ea5038;
+  background: #000;
+  padding: 0.1rem;
+  box-sizing: border-box;
+  display: none;
+  width: 0.4rem;
+  text-align: center;
+}
+
+.mobile-logo {
+  padding: 0.3rem 0.3rem 0 0.3rem;
+  box-sizing: border-box;
+  text-align: center;
+  display: none;
+
+  img {
+    min-width: 0;
+    margin-right: 0.15rem;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 1000px) {
+  .main {
+    .music-list {
+      width: 100% !important;
+      left: 0;
+      margin-left: 0;
+    }
+
+    .mobile-nav-btn {
+      display: inline-block;
+    }
+
+    .mobile-logo {
+      display: flex;
+    }
+
+    .main-left {
+      width: 60% !important;
+      left: 0;
+      margin-left: -80%;
+      z-index: 9999999999;
+      top: 0;
+      position: fixed !important;
+      background: rgba(59, 54, 51, 1) !important;
+
+      &.active {
+        margin-left: 0;
+      }
+
+      .main-left-top {
+        .logo {
+          display: none;
+        }
+
+        .nav {
+          margin-top: 0rem !important;
+        }
+      }
+    }
+  }
+
+  .phone-header {
+    display: block !important;
+  }
+
+  .main-top {
+    box-sizing: border-box;
+  }
+
+  .box-content {
+    padding: 0.3rem;
+  }
+
+  .swiper-container {
+    padding-bottom: 0 !important;
+
+    .swiper-wrapper {
+      min-height: 0;
+    }
+  }
+
+  .music {
+    padding: 0 0.15rem;
+    box-sizing: border-box;
+
+    .control {
+      a {
+
+        &:first-child,
+        &:last-child {
+          display: none !important;
+        }
+      }
+    }
+
+  }
+
+  #post-detail-modal {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 0.5rem;
+    box-sizing: border-box;
+
+    .post {
+      display: block;
+      overflow-y: auto;
+
+      .post-warp {
+        padding: 0rem;
+        height: auto;
+
+        .hide-modal-btn {
+          width: 0.3rem;
+          height: 0.3rem;
+          line-height: 0.3rem;
+          left: auto;
+          right: 0;
+        }
+      }
+    }
+  }
+
+}
+
+
+.gt-container .gt-no-init {
+  color: #fff !important;
+}
+
+
+#post-detail-modal{
+  position: absolute;
+  width: 100%;
+  height: 100% !important;
+  background: rgba(0,0,0,1);
+  left: 0;
+  bottom: -101%;
+  z-index: 3;
+  transition: all 0.5s;
+}
+
+#gitalk-container {
+  .gt-user-name, .gt-comments-null, .gt-counts{
+    color: #ffffff !important;
+  }
+}

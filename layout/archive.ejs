@@ -1,0 +1,33 @@
+<%- css('css/archive') %>
+<section class="archive main-right flex1" id="uuid" uuid="4c637aa0-4102-11eb-b113-9717c2aea740">
+  <%
+  var groupPosts = _.groupBy(page.posts.data, function (post) {
+    return post.date.format('YYYY');
+  });
+  groupPosts = _.reduce(groupPosts, function (result, posts, year) {
+    return result.concat({
+      posts: _.orderBy(posts, function (post) {
+        return post.date;
+      }, 'desc'),
+      year: year,
+    })
+  }, []);
+  groupPosts = _.orderBy(groupPosts, 'year', 'desc');
+  %>
+  <% _.forEach(groupPosts, function (group) { %>
+    <section class="archive-category">
+      <h1 class="title"><%= group.year %></h1>
+      <ul class="menu">
+        <% _.forEach(group.posts, function(item) { %>
+          <li>
+            <a onclick="showpostDetail('<%- url_for(item.path) %>')"><%= item.title %></a>
+            <span class="date"><%- date(item.date, 'MMM D, YYYY') %></span>
+          </li>
+        <% }); %>
+      </ul>
+    </section>
+  <% }); %>
+</section>
+
+<!-- 文章详情弹窗 -->
+<iframe id="post-detail-modal" frameborder="no" border="0"></iframe>

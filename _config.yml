@@ -1,0 +1,70 @@
+title: "CallMeSoul" # 网站标题
+subTitle: "Front-end developer" # 网站副标题
+logo: "/images/logo.svg" # 网站logo
+favicon: "/images/icon.png" # 网站favicon
+
+# node_sass配置
+node_sass: 
+  outputStyle: nested
+  precision: 5
+  sourceComments: false
+
+
+# 自定义菜单
+# icon图标放在source/icon里面，名字跟 icon 字段
+menu:
+  - { name: 首页, description: Home Page, link: /, icon: home }
+  - { name: 归档, description: Archive Page, link: /archives/, icon: archives }
+  - { name: 关于我, description: About Me, link: /about/, icon: about }
+
+# 音乐播放列表
+musics:
+  - { name: '说好不哭', singer: '周杰伦', url: 'https://callmesoul-blog.oss-cn-shenzhen.aliyuncs.com/music/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E8%AF%B4%E5%A5%BD%E4%B8%8D%E5%93%AD.mp3'}
+  - { name: '爱在西元前', singer: '周杰伦', url: 'https://callmesoul-blog.oss-cn-shenzhen.aliyuncs.com/music/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E7%88%B1%E5%9C%A8%E8%A5%BF%E5%85%83%E5%89%8D%20%5Bmqms2%5D.mp3'}
+  - { name: '龙拳', singer: '周杰伦', url: 'https://callmesoul-blog.oss-cn-shenzhen.aliyuncs.com/music/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E9%BE%99%E6%8B%B3%20%5Bmqms2%5D.mp3'}
+
+
+# 网站统计
+# 百度统计
+baidu_statistics:
+  enable: true # 是否开启
+  sitecode: f4e4f3d9d2532faa71e451f2ab41cbb6  ## 百度统计的网站code
+
+# 社交
+# icon图标放在source/icon里面，名字跟 key 值
+# 建议3/4个
+social:
+  weibo: https://weibo.com/tellmesoul/home?wvr=5
+  github: https://github.com/callmesoul
+  rss: /atom.xml
+
+# Custom footer
+## 邮箱
+mail: callmesoul@foxmail.com 
+copyright: 2019 CallMeSoul
+# 备案号
+beian: 粤ICP备15053557号
+
+
+# gitalk 
+# 详细使用说明 https://github.com/gitalk/gitalk/blob/master/readme-cn.md
+gitalk:
+  enable: true # 是否开启
+  clientID: 85810192d72d7f763a9a
+  clientSecret: e9867192041e53ad9f4581db6e50bbe7373a090d
+  repo: myblog
+  owner: callmesoul
+  admin: callmesoul
+  distractionFreeMode: false
+
+
+  # 文章详情 右侧 推荐文章 下方 广告位
+postMoreAdsence:
+  enable: true # 是否开启
+  google: # 谷歌单元广告 https://www.google.com/adsense
+    client: ca-pub-2041041323733631
+    slot: 4634786954
+
+
+
+

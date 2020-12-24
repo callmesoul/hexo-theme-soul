@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+<div id="post-list" class="post-list flex flex-v">
+    <div class="box-content flex1">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <% page.posts.each(function(post) { %>
+                    <a title="<%= post.title %>" alt="<%= post.title %>" onclick="showpostDetail('<%- url_for(post.path) %>')"
+                       class="post-item swiper-slide flex flex-v">
+                        <div class="image">
+                            <% if (post.cover) { %>
+                                <img title="<%= post.title %>" alt="<%= post.title %>" src="<%= post.cover %>"></img>
+                            <% } else { %>
+                                <img title="<%= post.title %>" alt="<%= post.title %>"
+                                     src="/images/default.jpg"></img>
+                            <% } %>
+                        </div>
+                        <div class="content-warp flex1 flex flex-v">
+                            <div class="title">&lt; <%= post.title %> &gt;</div>
+                            <div class="content flex1">
+                                <%- partial('_partial/excerpt', { post: post }) %>
+                            </div>
+                            <div class="post-tags">
+                                <% post.tags.forEach(function(tag) { %>
+                                    <span href="<%= tag.link %>" class="">
+                      # <%= tag.name %>
+                    </span>
+                                <% }); %>
+                            </div>
+                            <div class="other">
+                                <!--<a><i class="iconfont icon-iconfontordinaryliulan"></i>52</a>-->
+                                <!--<a><i class="iconfont icon-icon27"></i>52</a>-->
+                                <span><i class="iconfont icon-shijian"></i><%= date(post.date, 'MMM D, YYYY') %></span>
+                            </div>
+                        </div>
+                    </a>
+                <% }); %>
+                <!-- more -->
+                <% if (page.next) { %>
+                <a title="加载更多" alt="加载更多"  onClick="getMorePost(<%= page.next %>)"class="post-item swiper-slide flex flex-align-center flex-pack-center more">
+                    <span class="iconfont icon-more"></span>
+                    <div id="more-loading" class="flex flex-align-center flex-pack-center">
+                        <div class="loading-warp">
+                          <img src="/icon/loading-logo.svg" />
+                        </div>
+                    </div>
+                 </a>
+                 <% } %>
+            </div>
+            <div class="swiper-scrollbar"></div>
+        </div>
+    </div>
+</div>
+<!-- 文章详情弹窗 -->
+<iframe id="post-detail-modal" frameborder="no" border="0"></iframe>
+<%- js('js/index') %>

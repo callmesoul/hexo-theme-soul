@@ -1,0 +1,101 @@
+<div class="post flex" id="uuid" uuid="<%= page.uuid %>">
+  <%- css('css/sons-of-obsidian') %>
+  <%- css('css/post') %>
+  <div class="post-warp flex1">
+    <% if (is_post()){ %>
+    <a class="iconfont icon-up hide-modal-btn" alt="返回" title="返回" onclick="noticeParentHideModal()"></a>
+    <% } %>
+    <div class="post-content">
+      <% if (is_post()){ %>
+      <div class="title"><%= page.title %></div>
+      <div class="msg">
+        <%- date(page.date, 'YYYY/M/D hh:mm') %>
+        <!-- tag-list -->
+        <% if (page.tags){ %>
+          <% page.tags.each(function(tag) { %>
+            <a class="tag"><%- tag.name %></a>
+          <% }); %>
+        <% } %>
+      </div>
+      <% } %>
+      <!-- 导航目录 -->
+      <% if (is_post()){ %>
+      <div class="menu-tree">
+        <h2 class="name">目录</h2>
+        <%- toc(page.content) %>
+      </div>
+      <% } %>
+      <article>
+        <%- page.content %>
+      </article>
+      <%- partial('_partial/gitalk') %>
+    </div>
+  </div>
+
+  <!-- 关联文章 -->
+  <!-- list_posts -->
+  <div class="more-post">
+    <div class="more-post-header">其他文章推荐</div>
+    <%- list_posts({class: 'more-post', amount: 12}) %>
+
+    <!-- 广告位 -->
+<% if (theme.postMoreAdsence.enable){ %>
+  <div class="adsence">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- 博客文章详情推荐位广告 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="<%- theme.postMoreAdsence.google.client %>"
+        data-ad-slot="<%- theme.postMoreAdsence.google.slot %>"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <% } %>
+  </div>
+</div>
+
+
+<!-- 文章详情弹窗 -->
+<% if (is_page()){ %>
+  <iframe id="post-detail-modal" frameborder="no" border="0"></iframe>
+<% } %>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/prettify/r298/prettify.min.js"></script>
+<script>
+  window.onload = function() { 
+    const pres = document.getElementsByTagName('pre')
+    for (var i = 0; i < pres.length; i++) {
+      pres[i].className = 'prettyprint linenums'
+      pres[i].style.overflow = 'auto'
+    }
+    prettyPrint()
+    setTimeout(() => {
+    document.getElementById('loading').style.display = 'none';
+  }, 500);
+  }
+
+  
+  $(document).ready(function () {
+    const list = $('.more-post-list-link')
+    for (let i = 0; i < list.length; i++) {
+      list.eq(i).attr('link',  list.eq(i).attr('href'))
+      list.eq(i).removeAttr('href')
+    }
+  })
+
+  $('.more-post-list-link').click(function() {
+    const page = $(this).attr('link')
+    if (<%- is_page() %>) {
+      window.showpostDetail(page)
+    } else {
+      parent.window.showpostDetail(page)
+    }
+    
+  })
+</script>
+
+
+

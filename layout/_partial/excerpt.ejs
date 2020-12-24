@@ -1,0 +1,5 @@
+<% if (post.excerpt) { %>
+  <%- post.excerpt %>
+<% } else { %>
+  <%- strip_html(post.more) %>
+<% } %>

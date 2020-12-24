@@ -1,0 +1,146 @@
+.post{
+  height: 100% !important;
+  .post-warp{
+    padding: 0.6rem;
+    height: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    .hide-modal-btn{
+      position: absolute;
+      width: 0.6rem;
+      background: #d1d0d0;
+      height: 0.6rem;
+      z-index: 3;
+      text-align: center;
+      line-height: 0.6rem;
+      color: #d81e06;
+      left: 0;
+      top: 0;
+      font-size: 0.24rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .post-content{
+      position: relative;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 0.3rem;
+      box-sizing: border-box;
+      overflow-y: auto;
+       /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#70645d+0,312d2a+100 */
+       background: #70645d; /* Old browsers */
+       background: -moz-linear-gradient(left,  #70645d 0%, #312d2a 100%); /* FF3.6-15 */
+       background: -webkit-linear-gradient(left,  #70645d 0%,#312d2a 100%); /* Chrome10-25,Safari5.1-6 */
+       background: linear-gradient(to right,  #70645d 0%,#312d2a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#70645d', endColorstr='#312d2a',GradientType=1 ); /* IE6-9 */
+      &:after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+       
+        opacity: 0.6;
+        z-index: -1;
+      }
+      .title{
+        color: #ffffff;
+        font-size: 0.24rem;
+        padding-left: 0.15rem;
+        position: relative;
+        &:after{
+          content: '';
+          width: 0.04rem;
+          height: 0.24rem;
+          background: salmon;
+          position: absolute;
+          left: 0;
+          top: 50%;
+          margin-top: -0.12rem;
+        }
+      }
+      .msg{
+        margin-top: 0.1rem;
+        color: #bbbbbb;
+        font-size: 0.12rem;
+        .tag{
+          margin: 0 0.1rem;
+          background: #999999;
+          color: #f0e6e6;
+          padding: 0 0.1rem;
+          cursor: pointer;
+        }
+      }
+      .menu-tree{
+        margin-top: 0.3rem;
+        padding: 0.15rem;
+        background: rgba(0, 0, 0, 0.1);
+        .name{
+          color: #e5e5e5;
+          font-family: '宋体';
+        }
+        .toc{
+          list-style: none;
+          padding-inline-start: 0.3rem;
+          .toc-item{
+            margin-bottom: 0.1rem;
+            list-style: none;
+            .toc-link{
+              color: #e5e5e5;
+            }
+          }
+        }
+      }
+      article{
+        margin-top: 0.3rem;
+        color: #e5e5e5;
+        font-size: 0.14rem;
+        font-family: '宋体';
+        line-height: 0.3rem;
+        img{
+          max-width: 100%;
+        }
+      }
+    }
+    
+  }
+  .more-post{
+    width: 3.75rem;
+    padding: 0.6rem 0;
+    background: rgba(59, 54, 51, 0.6);
+    box-shadow: 0 0 0.1rem rgba(0,0,0,0.6);
+    .more-post-header{
+      padding: 0 0.3rem;
+      color: #ffffff;
+      position: relative;
+      font-weight: bold;
+      &:after{
+        content: '';
+        width: 0.04rem;
+        height: 0.24rem;
+        background: salmon;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -0.12rem;
+      }
+    }
+    .more-post-list{
+      .more-post-list-item{
+        line-height: 0.3rem;
+        color: #e5e5e5;
+        .more-post-list-link{
+          color: #e5e5e5;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.adsence{
+  position: relative;
+  padding: 0.3rem;
+  box-sizing: border-box;
+}

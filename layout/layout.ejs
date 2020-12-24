@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .loading{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  background: #ffffff;
+}
+.loading .loading-warp{
+    margin: 0 auto;
+}
+.loading .loading-warp img{
+  width: 3em;
+  height: 3em;
+  animation: loading 1s;
+  animation-iteration-count: infinite;
+}
+@keyframes loading{
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+    </style>
+    <script>
+      function getQueryVariable(variable)
+        {
+              var query = window.location.search.substring(1);
+              var vars = query.split("&");
+              for (var i=0;i<vars.length;i++) {
+                      var pair = vars[i].split("=");
+                      if(pair[0] == variable){return pair[1];}
+              }
+              return(false);
+        }
+        var isAjax = getQueryVariable('ajax') ? true : false
+        console.log(isAjax)
+    </script>
+    <%- partial('_partial/head') %>
+  </head>
+  <body>
+
+    <!-- loading -->
+    <div class="loading" id="loading">
+      <div class="loading-warp">
+        <img title="loading" alt="loading" src="/icon/loading-logo.svg" />
+      </div>
+    </div>
+
+    <!-- main -->
+    <div class="main height-100 flex flex-v">
+      <div class="mobile-logo flex flex-align-center">
+        <img src="<%= theme.logo %>" alt="<%= theme.title %>" title="<%= theme.title %>" class="flex1" />
+        <a alt="菜单" tile="菜单"  to="/home" class="mobile-nav-btn iconfont icon-menu" onclick="switchMobileMenu()"></a>
+      </div>
+      <div class="main-top flex flex1">
+        
+        <!--主页上左部分-->
+        <div class="height-100 main-left  flex flex-v">
+          <div class="main-left-top flex1">
+            <a alt="logo" title="logo"  class="logo"  onclick="navigation('/')">
+              <img title="<%= theme.title %>" alt="<%= theme.title %>" src="<%= theme.logo %>" />
+              <div class="sub-title"><%= theme.subTitle %></div>
+            </a>
+            <%- partial('_partial/nav') %>
+          </div>
+    
+          <view class="website-msg">
+            <div class="beian"><a alt="备案" title="备案" target="_blank" href="http://www.miitbeian.gov.cn/"><%= theme.beian %></a></div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="beian"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div>
+            <div class="theme-drsc">PowerBy:<a alt="Hexo" title="Hexo" href="https://hexo.io" target="_blank">Hexo</a> ThemeBy:<a href="" target="_blank">Soul</a></div>
+            <div class="copyright">Copyright &#169 <a href="mailto:<%= theme.mail %>" alt="<%= theme.mail %>" title="<%= theme.mail %>"><%= theme.copyright %></a> </div>
+          </view>
+
+          <!-- 社交图标 -->
+          <% if (theme.social) { %>
+          <div class="social flex flex-align-center ">
+              <% _.forEach(theme.social, function(value, key) { %>
+                <% if (value) { %>
+                  <a class="flex1 text-center" href="<%= url_for(value) %>" target="_blank" title="<%= key %>" alt="<%= key %>">
+                    <div class="icon relative flex flex-align-center flex-pack-center">
+                      <img class="svg-icon" src="/icon/<%= key %>.svg" onload="SVGInject(this)"/>
+                    </div>
+                  </a>
+                <% } %>
+              <% }); %>
+          </div>
+          <% } %>
+        </div>
+        <!--主页上右部分-->
+
+        <div class="main-right flex1">
+          <div id="main-body">
+            <%- body %>
+          </div>
+
+          <div id="main-body-loading" class="flex flex-align-center flex-pack-center">
+            <div class="loading-warp">
+              <img title="loading" alt="loading" src="/icon/loading-logo.svg" />
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="main-bottom">
+        <!-- 音乐播放器 -->
+        <%- partial('_partial/music') %>
+      </div>
+    </div>
+
+    <!-- commonjs -->
+    <%- js('js/common') %>
+    <!-- 百度统计 -->
+    <%- partial('_partial/baidu-statistics') %>
+    
+  </body>
+</html>
+
+<script>
+  if (isAjax) {
+    $('.main-left').css('display', 'none')
+    $('.main-bottom').css('display', 'none')
+  } else {
+    $('.hide-modal-btn').css('display', 'none')
+    $('audio').remove()
+  }
+  var gitalk = {
+    enable: eval('<%- theme.gitalk.enable %>'),
+    clientID: '<%- theme.gitalk.clientID %>',
+    clientSecret: '<%- theme.gitalk.clientSecret %>',
+    repo: '<%- theme.gitalk.repo %>',
+    owner: '<%- theme.gitalk.owner %>',
+    admin: ['<%- theme.gitalk.admin %>'],
+  }
+  function switchMobileMenu () {
+    const btn = $('.mobile-nav-btn')
+    const isActive = btn.hasClass('active')
+    if (isActive) {
+      btn.removeClass('icon-close')
+      btn.removeClass('active')
+      btn.addClass('icon-menu')
+      $('.main .main-left').css('margin-left', '-81%')
+    } else {
+      btn.removeClass('icon-menu')
+      btn.addClass('active')
+      btn.addClass('icon-close')
+      $('.main .main-left').css('margin-left', 0)
+    }
+  }
+</script>

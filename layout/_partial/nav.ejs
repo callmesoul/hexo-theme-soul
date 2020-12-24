@@ -1,0 +1,90 @@
+<nav class="nav">
+
+  <% if (theme.menu) { %>
+    <% theme.menu.forEach(function(nav) { %>
+      <a title="<%= nav.name %>"  alt="<%= nav.name %>" link="<%= nav.link %>"  onclick="navigation('<%= nav.link %>')"  class="<%- is_current(nav.link) ? 'active' : '' %>">
+        <img class="icon" src="/icon/<%= nav.icon %>.svg" onload="SVGInject(this)"></img>
+        <div class="name">
+          <div class="cnname"><%= nav.name %></div>
+          <div class="enname"><%= nav.description %></div>
+        </div>
+      </a>
+    <% }); %>
+  <% } %>
+
+  <!--<a href="/link/">
+    <div class="icon"><i class="iconfont icon-link"></i></div>
+    <div class="name">
+      <div class="cnname">友情链接</div>
+      <div class="enname">Friends Web Link</div>
+    </div>
+  </a>-->
+</nav>
+
+<script>
+  var currentPage = window.location.pathname
+  // 异步加载页面
+  function navigation (url, isPopstate) {
+    if (currentPage === url) {
+      return false
+    }
+    $('nav a').removeClass('active')
+    const index =$('nav a').filter(index => {
+      if ($('nav a').eq(index).attr('link') === url) {
+        $('nav a').eq(index).addClass('active')
+        return index
+      }
+    })
+    $('#main-body').html(`<iframe id="main-body-iframe" src="${url}?ajax=true" frameborder="no" border="0"></iframe>`)
+    if(!isPopstate) {
+      window.history.pushState(window.history.state, '', window.location.origin + url)
+    }
+    currentPage = url
+    // $('#main-body-loading').css('display', 'flex')
+    // $('nav a').removeClass('active')
+    // const index =$('nav a').filter(index => {
+    //   if ($('nav a').eq(index).attr('link') === url) {
+    //     $('nav a').eq(index).addClass('active')
+    //     return index
+    //   }
+    // })
+    // fetch(url, {'Content-Type': 'text/html'})
+    // .then(res=>res.text()).then(function(html) {
+    //         const parser = new DOMParser();
+    //         const dom = parser.parseFromString(html, "text/html");
+    //         const newDom = dom.getElementById('main-body').children
+    //         $('#main-body').html(newDom)
+    //         if(!isPopstate) {
+    //           window.history.pushState(window.history.state, '', window.location.origin + url)
+    //         }
+    // //         currentPage = url
+    //         if (url === '/') {
+    //           let script = document.createElement('script')
+    //           script.type= 'text/javascript'
+    //           let scriptSrc='/js/index.js'
+    //           script.src= scriptSrc
+    //           var head = document.getElementsByTagName('head')[0]
+    //           head.appendChild(script)
+    //         }
+    //         // 手机端选择完要隐藏菜单
+    //         const clientWidth = document.documentElement.clientWidth
+    //         if (clientWidth < 1000) {
+    //           $('.main .main-left').css('margin-left', '-81%')
+    //           const btn = $('.mobile-nav-btn')
+    //           btn.removeClass('icon-close')
+    //           btn.removeClass('active')
+    //           btn.addClass('icon-menu')
+    //           $('.main .main-left').css('margin-left', '-81%')
+    //         }
+    //         setTimeout(() => {
+    //             $('#main-body-loading').fadeOut()
+    //         }, 500)
+    // })
+  }
+
+
+  window.addEventListener('popstate',function(event){
+    const path = window.location.pathname
+    navigation(path, true)
+  })
+</script>

@@ -1,0 +1,52 @@
+.archive {
+  padding: 0.8rem 1.6rem !important;
+  background: rgba(80, 73, 70, 0.6);
+  height: 100%;
+  box-sizing: border-box;
+  @media screen and (max-width: 6rem) {
+      padding: 0.2rem;
+ }
+  overflow: auto !important;
+}
+.archive-category {
+  >.title {
+      font-size: 0.28rem;
+      line-height: 0.4rem;
+      font-weight: 600;
+      color: #ffffff;
+ }
+  >.menu {
+      margin-bottom: 0.7rem;
+      >li {
+          margin-top: 0.1rem;
+          font-size: 0.16rem;
+          line-height: 0.24rem;
+          display: flex;
+          justify-content: space-between;
+          line-height: 0.24rem;
+          >a {
+              color: #ffffff;
+              cursor: pointer;
+              &:hover {
+                  opacity: 1;
+                  color: #f0534e;
+             }
+         }
+          >span {
+              opacity: .45;
+              font-size: 0.14rem;
+              min-width: 0.9rem;
+              text-align: right;
+              color: #ffffff;
+         }
+     }
+ }
+  &:last-child {
+      >.menu {
+          margin-bottom: 0;
+     }
+ }
+}
+.main .main-top .main-right #main-body{
+  overflow: hidden;
+}
