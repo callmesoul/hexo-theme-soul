@@ -545,7 +545,7 @@ body {
 }
 
 .mobile-logo {
-  padding: 0.3rem 0.3rem 0 0.3rem;
+  padding: 0.3rem 0.3rem 0.3rem 0.3rem;
   box-sizing: border-box;
   text-align: center;
   display: none;
@@ -606,7 +606,7 @@ body {
   }
 
   .box-content {
-    padding: 0.3rem;
+    padding: 0 0.3rem 0.3rem 0.3rem;
   }
 
   .swiper-container {
@@ -634,28 +634,29 @@ body {
   }
 
   #post-detail-modal {
-    position: fixed;
-    left: 0;
-    width: 100%;
+    position: fixed !important;
+    left: 0 !important;
+    width: 100% !important;
     height: 100%;
-    padding-bottom: 0.5rem;
-    box-sizing: border-box;
+    padding-bottom: 0.5rem !important;
+    box-sizing: border-box !important;
+  }
 
-    .post {
-      display: block;
-      overflow-y: auto;
+  .post {
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
 
-      .post-warp {
-        padding: 0rem;
-        height: auto;
+    .post-warp {
+      padding: 0rem !important;
+      height: auto !important;
 
-        .hide-modal-btn {
-          width: 0.3rem;
-          height: 0.3rem;
-          line-height: 0.3rem;
-          left: auto;
-          right: 0;
-        }
+      .hide-modal-btn {
+        width: 0.3rem !important;
+        height: 0.3rem !important;
+        line-height: 0.3rem !important;
+        left: auto !important;
+        right: 0;
       }
     }
   }
