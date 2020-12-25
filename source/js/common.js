@@ -7,9 +7,6 @@ function showpostDetail(page) {
 // 隐藏文章详情弹窗
 function hienPostDetailModal() {
   document.getElementById('post-detail-modal').style.bottom = '-101%';
-  // setTimeout(() => {
-  //   document.getElementById('post-detail-modal').style.display = 'none';
-  // }, 500)
 }
 
 

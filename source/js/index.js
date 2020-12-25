@@ -62,6 +62,3 @@ function getMorePost(page) {
 			});
 	}, 1000);
 }
-
-
-
