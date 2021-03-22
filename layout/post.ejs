@@ -36,7 +36,7 @@
   <!-- list_posts -->
   <div class="more-post">
     <div class="more-post-header">其他文章推荐</div>
-    <%- list_posts({class: 'more-post', amount: 12}) %>
+    <ul class="more-post-list"></ul>
 
     <!-- 广告位 -->
 <% if (theme.postMoreAdsence.enable){ %>
@@ -82,24 +82,16 @@
   }, 500);
   }
 
+  // 插入推荐文章
   
-  $(document).ready(function () {
-    const list = $('.more-post-list-link')
-    for (let i = 0; i < list.length; i++) {
-      list.eq(i).attr('link',  list.eq(i).attr('href'))
-      list.eq(i).removeAttr('href')
-    }
+  let list = ''
+  fetch(`http://localhost:1337/articles/recommend`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title: '<%= page.title %>', guid: '<%= page.uuid %>', content: ''})}).then((res) =>  { return res.json() }).then((res) => {
+    res.forEach(item => {
+      list += `<li class="more-post-list-item"><a class="more-post-list-link" href="${item.link}" target="_blank">${item.title}</a></li>`
+    })
+    $('.more-post-list').html(list)
   })
 
-  $('.more-post-list-link').click(function() {
-    const page = $(this).attr('link')
-    if (<%- is_page() %>) {
-      window.showpostDetail(page)
-    } else {
-      parent.window.showpostDetail(page)
-    }
-    
-  })
 </script>
 
 

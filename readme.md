@@ -2,8 +2,7 @@
 
 | 原创hexo主题，喜欢的给个start呗！
 
-## 预览
-- [CallMeSoul](https://callmesoul.cn/)
+
 ## 主题亮点
 - 原创，独一无二
 - 全站伪`SPA`(单页面)无刷新页面加载，用户体验还是感觉`SPA`好
@@ -22,6 +21,12 @@
 ## 安装
 1. `clone`本项目到hexo项目的`themes`目录下
 2. 更改项目的根目录配置文件`_config.yml`,修改配置`theme: soul` 即可
+
+
+## 预览
+![首页](./screenshot/index.png)
+![archive](./screenshot/archive.png)
+![post](./screenshot/post.png)
 
 ## 使用说明
 

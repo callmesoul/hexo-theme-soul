@@ -36,7 +36,7 @@ baidu_statistics:
 social:
   weibo: https://weibo.com/tellmesoul/home?wvr=5
   github: https://github.com/callmesoul
-  rss: /atom.xml
+  rss: /rss.xml
 
 # Custom footer
 ## 邮箱
